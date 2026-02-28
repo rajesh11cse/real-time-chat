@@ -1,0 +1,11 @@
+{
+  "//_comment": "AI-generated TypeScript config for frontend",
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "outDir": "./dist",
+    "module": "ESNext",
+    "moduleResolution": "node"
+  },
+  "include": ["src/**/*"]
+}

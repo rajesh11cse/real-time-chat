@@ -1,0 +1,12 @@
+{
+  "//_comment": "AI-generated TypeScript config for chat-service",
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    // AI-generated: required for NestJS / TypeORM decorators
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "useDefineForClassFields": false
+  },
+  "include": ["src/**/*"]
+}

@@ -1,0 +1,5 @@
+{
+  "//_comment": "AI-generated Nest CLI config for chat-service",
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "src"
+}

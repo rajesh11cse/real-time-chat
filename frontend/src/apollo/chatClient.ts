@@ -1,4 +1,4 @@
-// AI-generated Apollo Client setup for chat-service (HTTP + WebSocket)
+// Apollo Client setup for chat-service (HTTP + WebSocket)
 import {
   ApolloClient,
   ApolloLink,
@@ -15,7 +15,7 @@ const chatHttpUri =
   import.meta.env.VITE_CHAT_GRAPHQL_HTTP || '/api/chat/graphql';
 
 function computeWsUrlFromLocation(httpPath: string): string {
-  // AI-generated: construct ws(s)://<host>/<path> based on current page location
+  //  construct ws(s)://<host>/<path> based on current page location
   if (typeof window === 'undefined') {
     return `ws://localhost${httpPath}`;
   }

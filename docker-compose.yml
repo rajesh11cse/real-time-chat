@@ -1,4 +1,4 @@
-# AI-generated docker-compose for real-time chat system
+# docker-compose for real-time chat system
 services:
   postgres-user:
     image: postgres:16-alpine
@@ -12,7 +12,7 @@ services:
       - "5433:5432"
     volumes:
       - postgres-user-data:/var/lib/postgresql/data
-      # AI-generated: initialize schema on first boot
+      #  initialize schema on first boot
       - ./backend/user-service/db/init.sql:/docker-entrypoint-initdb.d/001-init.sql:ro
     networks:
       - backend
@@ -29,7 +29,7 @@ services:
       - "5434:5432"
     volumes:
       - postgres-chat-data:/var/lib/postgresql/data
-      # AI-generated: initialize schema on first boot
+      #  initialize schema on first boot
       - ./backend/chat-service/db/init.sql:/docker-entrypoint-initdb.d/001-init.sql:ro
     networks:
       - backend
@@ -116,7 +116,7 @@ services:
     restart: unless-stopped
     environment:
       FRONTEND_PORT: 3000
-      # AI-generated: Vite bakes env at build-time; app uses sane defaults
+      #  Vite bakes env at build-time; app uses sane defaults
       VITE_USER_GRAPHQL_HTTP: /api/user/graphql
       VITE_CHAT_GRAPHQL_HTTP: /api/chat/graphql
     networks:

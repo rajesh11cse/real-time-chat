@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.JwtStrategy = void 0;
-// AI-generated JWT strategy for chat-service to validate tokens issued by user-service
+// JWT strategy for chat-service to validate tokens issued by user-service
 const common_1 = require("@nestjs/common");
 const passport_1 = require("@nestjs/passport");
 const passport_jwt_1 = require("passport-jwt");
@@ -23,7 +23,7 @@ let JwtStrategy = class JwtStrategy extends (0, passport_1.PassportStrategy)(pas
         });
     }
     async validate(payload) {
-        // AI-generated validation payload mapping
+        // validation payload mapping
         return { userId: payload.sub, username: payload.username };
     }
 };

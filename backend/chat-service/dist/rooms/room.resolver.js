@@ -13,7 +13,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RoomResolver = void 0;
-// AI-generated GraphQL resolver for chat rooms and membership
+// GraphQL resolver for chat rooms and membership
 const common_1 = require("@nestjs/common");
 const graphql_1 = require("@nestjs/graphql");
 const room_entity_1 = require("./room.entity");

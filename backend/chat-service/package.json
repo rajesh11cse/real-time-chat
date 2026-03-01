@@ -1,5 +1,5 @@
 {
-  "//_comment": "AI-generated NestJS chat-service package.json",
+  "//_comment": "NestJS chat-service package.json",
   "name": "chat-service",
   "version": "0.1.0",
   "private": true,

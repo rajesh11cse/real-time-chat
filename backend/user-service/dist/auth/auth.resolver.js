@@ -13,7 +13,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthResolver = void 0;
-// AI-generated GraphQL resolver for authentication
+// GraphQL resolver for authentication
 const graphql_1 = require("@nestjs/graphql");
 const auth_service_1 = require("./auth.service");
 const auth_types_1 = require("./auth.types");

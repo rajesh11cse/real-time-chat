@@ -1,4 +1,4 @@
-// AI-generated GraphQL auth guard using JWT strategy
+// GraphQL auth guard using JWT strategy
 import { ExecutionContext, Injectable } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { GqlExecutionContext } from '@nestjs/graphql';

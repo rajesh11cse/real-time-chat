@@ -1,4 +1,4 @@
-// AI-generated room creation/joining component
+// room creation/joining component
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { CREATE_ROOM, JOIN_ROOM } from '../graphql/chat';

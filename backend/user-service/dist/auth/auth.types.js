@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthPayload = void 0;
-// AI-generated GraphQL type for authentication payload
+// GraphQL type for authentication payload
 const graphql_1 = require("@nestjs/graphql");
 const user_entity_1 = require("../users/user.entity");
 let AuthPayload = class AuthPayload {

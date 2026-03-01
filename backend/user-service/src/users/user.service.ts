@@ -1,4 +1,4 @@
-// AI-generated user service for basic CRUD and lookup
+// user service for basic CRUD and lookup
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';

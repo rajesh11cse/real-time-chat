@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RoomModule = void 0;
-// AI-generated NestJS module for Room domain
+// NestJS module for Room domain
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const room_entity_1 = require("./room.entity");

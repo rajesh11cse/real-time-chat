@@ -1,4 +1,4 @@
-// AI-generated TypeORM entity and GraphQL type for User
+// TypeORM entity and GraphQL type for User
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from 'typeorm';
 

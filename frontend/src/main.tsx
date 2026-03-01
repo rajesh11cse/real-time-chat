@@ -1,4 +1,4 @@
-// AI-generated React entrypoint for chat frontend wired to backend GraphQL services
+// React entrypoint for chat frontend wired to backend GraphQL services
 import './index.css';
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';

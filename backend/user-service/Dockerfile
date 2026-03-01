@@ -1,4 +1,4 @@
-# AI-generated Dockerfile for user-service (NestJS + GraphQL)
+# Dockerfile for user-service (NestJS + GraphQL)
 # Build context must be repo root so tsconfig.base.json is available
 FROM node:20-alpine AS build
 

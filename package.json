@@ -1,5 +1,5 @@
 {
-  "//_comment": "AI-generated monorepo root package.json for chat system",
+  "//_comment": "monorepo root package.json for chat system",
   "name": "realtime-chat-monorepo",
   "private": true,
   "version": "0.1.0",

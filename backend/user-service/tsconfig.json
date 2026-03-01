@@ -1,5 +1,5 @@
 {
-  "//_comment": "AI-generated TypeScript config for user-service",
+  "//_comment": "TypeScript config for user-service",
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "target": "ES2020",

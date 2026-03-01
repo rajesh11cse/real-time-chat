@@ -13,7 +13,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MessageResolver = void 0;
-// AI-generated GraphQL resolver for messages, including subscriptions
+// GraphQL resolver for messages, including subscriptions
 const common_1 = require("@nestjs/common");
 const graphql_1 = require("@nestjs/graphql");
 const message_entity_1 = require("./message.entity");

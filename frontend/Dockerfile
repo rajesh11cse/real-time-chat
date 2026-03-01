@@ -1,4 +1,4 @@
-# AI-generated Dockerfile for React + Vite frontend
+# Dockerfile for React + Vite frontend
 FROM node:20-alpine AS build
 
 WORKDIR /usr/src/app

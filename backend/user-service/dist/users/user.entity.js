@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.User = void 0;
-// AI-generated TypeORM entity and GraphQL type for User
+// TypeORM entity and GraphQL type for User
 const graphql_1 = require("@nestjs/graphql");
 const typeorm_1 = require("typeorm");
 let User = class User {

@@ -1,4 +1,4 @@
-// AI-generated GraphQL auth guard using JWT strategy for chat-service
+// GraphQL auth guard using JWT strategy for chat-service
 import { ExecutionContext, Injectable } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { GqlExecutionContext } from '@nestjs/graphql';

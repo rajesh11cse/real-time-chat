@@ -1,4 +1,4 @@
-// AI-generated GraphQL resolver for authentication
+// GraphQL resolver for authentication
 import { Args, Mutation, Resolver } from '@nestjs/graphql';
 import { AuthService } from './auth.service';
 import { AuthPayload } from './auth.types';

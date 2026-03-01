@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RegisterInput = void 0;
-// AI-generated GraphQL input type for user registration
+// GraphQL input type for user registration
 const graphql_1 = require("@nestjs/graphql");
 let RegisterInput = class RegisterInput {
 };

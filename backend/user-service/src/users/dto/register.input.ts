@@ -1,4 +1,4 @@
-// AI-generated GraphQL input type for user registration
+// GraphQL input type for user registration
 import { Field, InputType } from '@nestjs/graphql';
 
 @InputType()

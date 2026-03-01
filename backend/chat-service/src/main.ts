@@ -1,4 +1,4 @@
-// AI-generated NestJS bootstrap file for chat-service
+// NestJS bootstrap file for chat-service
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 
@@ -8,7 +8,7 @@ async function bootstrap() {
 }
 
 bootstrap().catch((err) => {
-  // AI-generated error log
+  // error log
   // eslint-disable-next-line no-console
   console.error('Error starting chat-service', err);
 });

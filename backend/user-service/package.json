@@ -1,5 +1,5 @@
 {
-  "//_comment": "AI-generated NestJS user-service package.json",
+  "//_comment": "NestJS user-service package.json",
   "name": "user-service",
   "version": "0.1.0",
   "private": true,

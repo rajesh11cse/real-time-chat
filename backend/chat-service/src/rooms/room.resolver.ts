@@ -1,4 +1,4 @@
-// AI-generated GraphQL resolver for chat rooms and membership
+// GraphQL resolver for chat rooms and membership
 import { UseGuards } from '@nestjs/common';
 import { Args, ID, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { Room } from './room.entity';

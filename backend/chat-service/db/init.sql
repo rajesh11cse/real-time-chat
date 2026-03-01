@@ -1,4 +1,4 @@
--- AI-generated SQL schema for chat-service database
+-- SQL schema for chat-service database
 
 CREATE TABLE IF NOT EXISTS rooms (
   id BIGSERIAL PRIMARY KEY,

@@ -1,4 +1,4 @@
-// AI-generated GraphQL resolver for messages, including subscriptions
+// GraphQL resolver for messages, including subscriptions
 import { Inject, UseGuards } from '@nestjs/common';
 import {
   Args,

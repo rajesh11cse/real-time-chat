@@ -1,5 +1,5 @@
 {
-  "//_comment": "AI-generated React frontend package.json (Vite + TS)",
+  "//_comment": "React frontend package.json (Vite + TS)",
   "name": "chat-frontend",
   "version": "0.1.0",
   "private": true,

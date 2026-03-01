@@ -1,4 +1,4 @@
-// AI-generated root module for user-service
+// root module for user-service
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
@@ -10,18 +10,18 @@ import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
-    // AI-generated configuration module setup
+    // configuration module setup
     ConfigModule.forRoot({
       isGlobal: true,
     }),
-    // AI-generated GraphQL configuration for user-service
+    // GraphQL configuration for user-service
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: true,
       path: '/graphql',
       context: ({ req }: { req: any }) => ({ req }),
     }),
-    // AI-generated TypeORM configuration for Postgres
+    // TypeORM configuration for Postgres
     TypeOrmModule.forRootAsync({
       useFactory: () => ({
         type: 'postgres',

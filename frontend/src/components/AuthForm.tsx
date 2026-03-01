@@ -1,4 +1,4 @@
-// AI-generated authentication form component (register/login) using user-service
+// authentication form component (register/login) using user-service
 import React, { useState } from 'react';
 import { userClient } from '../apollo/userClient';
 import { LOGIN, REGISTER } from '../graphql/user';

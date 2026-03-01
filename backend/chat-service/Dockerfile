@@ -1,4 +1,4 @@
-# AI-generated Dockerfile for chat-service (NestJS + GraphQL Subscriptions)
+# Dockerfile for chat-service (NestJS + GraphQL Subscriptions)
 # Build context must be repo root so tsconfig.base.json is available
 FROM node:20-alpine AS build
 

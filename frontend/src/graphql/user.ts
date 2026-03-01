@@ -1,4 +1,4 @@
-// AI-generated GraphQL operations for user-service
+// GraphQL operations for user-service
 import { gql } from '@apollo/client';
 
 export const REGISTER = gql`

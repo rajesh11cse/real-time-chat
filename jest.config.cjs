@@ -1,4 +1,4 @@
-// AI-generated Jest config for e2e tests
+// Jest config for e2e tests
 module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'node',

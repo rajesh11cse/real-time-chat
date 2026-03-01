@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MessageModule = void 0;
-// AI-generated NestJS module for Message domain
+// NestJS module for Message domain
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const message_entity_1 = require("./message.entity");

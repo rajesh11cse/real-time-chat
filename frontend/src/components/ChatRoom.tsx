@@ -1,4 +1,4 @@
-// AI-generated chat room component with history and live updates
+// chat room component with history and live updates
 import React, { useEffect, useMemo, useState } from 'react';
 import { useMutation, useQuery, useSubscription } from '@apollo/client';
 import { MESSAGE_ADDED, MESSAGES, SEND_MESSAGE } from '../graphql/chat';

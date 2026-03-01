@@ -1,13 +1,19 @@
 # AI-generated Dockerfile for chat-service (NestJS + GraphQL Subscriptions)
+# Build context must be repo root so tsconfig.base.json is available
 FROM node:20-alpine AS build
 
 WORKDIR /usr/src/app
 
-COPY package*.json ./
+# Copy base tsconfig so "extends": "../../tsconfig.base.json" resolves
+COPY tsconfig.base.json ./
+COPY backend/chat-service/package*.json ./backend/chat-service/
+COPY backend/chat-service/tsconfig.json ./backend/chat-service/
+COPY backend/chat-service/nest-cli.json ./backend/chat-service/
+
+WORKDIR /usr/src/app/backend/chat-service
 RUN npm install --only=production && npm install --save-dev typescript @nestjs/cli
 
-COPY tsconfig.json nest-cli.json ./
-COPY src ./src
+COPY backend/chat-service/src ./src
 
 RUN npx nest build
 
@@ -16,8 +22,8 @@ WORKDIR /usr/src/app
 
 ENV NODE_ENV=production
 
-COPY --from=build /usr/src/app/dist ./dist
-COPY package*.json ./
+COPY --from=build /usr/src/app/backend/chat-service/dist ./dist
+COPY --from=build /usr/src/app/backend/chat-service/package*.json ./
 RUN npm install --only=production
 
 EXPOSE 4002

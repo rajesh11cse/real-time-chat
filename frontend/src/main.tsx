@@ -1,4 +1,5 @@
 // AI-generated React entrypoint for chat frontend wired to backend GraphQL services
+import './index.css';
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import { ApolloProvider } from '@apollo/client';
@@ -33,26 +34,32 @@ const App: React.FC = () => {
 
   if (!room) {
     return (
-      <div>
-        <div style={{ textAlign: 'right', padding: '1rem' }}>
-          Logged in as <strong>{auth.user.displayName}</strong>{' '}
-          <button type="button" onClick={handleLogout}>
+      <div className="app-shell">
+        <header className="header">
+          <span className="header-user">
+            Logged in as <strong>{auth.user.displayName}</strong>
+          </span>
+          <button type="button" className="btn btn-secondary" onClick={handleLogout}>
             Logout
           </button>
+        </header>
+        <div className="page-center">
+          <RoomSelector onRoomSelected={setRoom} />
         </div>
-        <RoomSelector onRoomSelected={setRoom} />
       </div>
     );
   }
 
   return (
-    <div>
-      <div style={{ textAlign: 'right', padding: '1rem' }}>
-        Logged in as <strong>{auth.user.displayName}</strong>{' '}
-        <button type="button" onClick={handleLogout}>
+    <div className="app-shell">
+      <header className="header">
+        <span className="header-user">
+          Logged in as <strong>{auth.user.displayName}</strong>
+        </span>
+        <button type="button" className="btn btn-secondary" onClick={handleLogout}>
           Logout
         </button>
-      </div>
+      </header>
       <ChatRoom
         roomId={room.id}
         roomName={room.name}

@@ -55,6 +55,12 @@ With the stack running via nginx on localhost:
 npm run test:e2e
 ```
 
+## Architecture and design choices
+
+- **User service** – Manages users (register, login). Two instances behind nginx for availability.
+- **Chat service** – Manages rooms and messages; **real-time delivery** via GraphQL subscriptions over WebSocket (`graphql-ws`). Two instances; **Redis PubSub** broadcasts new messages so any instance can push to subscribed clients. Nginx uses `ip_hash` for chat so a given client sticks to one instance.
+- **Frontend** – Single React app; uses Apollo Client with a **split link**: subscriptions go over WebSocket to `/api/chat/graphql`, queries/mutations over HTTP. New messages appear live without polling.
+
 ## Environment variables
 
 See `.env.example` for the full set. Key ones:

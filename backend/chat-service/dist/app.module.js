@@ -37,6 +37,7 @@ exports.AppModule = AppModule = __decorate([
                 installSubscriptionHandlers: true,
                 subscriptions: {
                     'graphql-ws': true,
+                    'subscriptions-transport-ws': true,
                 },
                 context: ({ req, extra }) => {
                     // For WebSocket connections, build a fake request object

@@ -41,7 +41,7 @@ exports.RoomResolver = RoomResolver;
 __decorate([
     (0, common_1.UseGuards)(gql_auth_guard_1.GqlAuthGuard),
     (0, graphql_1.Query)(() => room_entity_1.Room, { nullable: true }),
-    __param(0, (0, graphql_1.Args)('id')),
+    __param(0, (0, graphql_1.Args)('id', { type: () => graphql_1.ID })),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
@@ -67,7 +67,7 @@ __decorate([
 __decorate([
     (0, common_1.UseGuards)(gql_auth_guard_1.GqlAuthGuard),
     (0, graphql_1.Mutation)(() => room_entity_1.Room),
-    __param(0, (0, graphql_1.Args)('roomId')),
+    __param(0, (0, graphql_1.Args)('roomId', { type: () => graphql_1.ID })),
     __param(1, (0, current_user_decorator_1.CurrentUser)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, Object]),

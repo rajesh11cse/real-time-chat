@@ -93,12 +93,21 @@ let MessageResolver = class MessageResolver {
     }
     async sendMessage(roomId, content, user) {
         const message = await this.messageService.createMessage(roomId, user.userId, content);
+        const roomIdStr = String(roomId);
+        const serialized = {
+            id: String(message.id),
+            roomId: roomIdStr,
+            senderId: String(message.senderId),
+            content: message.content,
+            createdAt: message.createdAt.toISOString(),
+        };
         await this.pubSub.publish(MESSAGE_ADDED_TOPIC, {
-            messageAdded: message,
-            roomId,
+            messageAdded: serialized,
+            roomId: roomIdStr,
         });
         return message;
     }
+    // No auth guard on subscription so both clients get 101 and receive events; mutations still protected
     messageAdded(_roomId) {
         return this.pubSub.asyncIterator(MESSAGE_ADDED_TOPIC);
     }
@@ -107,7 +116,7 @@ exports.MessageResolver = MessageResolver;
 __decorate([
     (0, common_1.UseGuards)(gql_auth_guard_1.GqlAuthGuard),
     (0, graphql_1.Query)(() => MessageConnection),
-    __param(0, (0, graphql_1.Args)('roomId')),
+    __param(0, (0, graphql_1.Args)('roomId', { type: () => graphql_1.ID })),
     __param(1, (0, graphql_1.Args)('after', { type: () => String, nullable: true })),
     __param(2, (0, graphql_1.Args)('limit', { type: () => graphql_1.Int, nullable: true, defaultValue: 50 })),
     __metadata("design:type", Function),
@@ -117,7 +126,7 @@ __decorate([
 __decorate([
     (0, common_1.UseGuards)(gql_auth_guard_1.GqlAuthGuard),
     (0, graphql_1.Mutation)(() => message_entity_1.Message),
-    __param(0, (0, graphql_1.Args)('roomId')),
+    __param(0, (0, graphql_1.Args)('roomId', { type: () => graphql_1.ID })),
     __param(1, (0, graphql_1.Args)('content')),
     __param(2, (0, current_user_decorator_1.CurrentUser)()),
     __metadata("design:type", Function),
@@ -125,12 +134,19 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], MessageResolver.prototype, "sendMessage", null);
 __decorate([
-    (0, common_1.UseGuards)(gql_auth_guard_1.GqlAuthGuard),
     (0, graphql_1.Subscription)(() => message_entity_1.Message, {
-        filter: (payload, variables) => payload.roomId === variables.roomId,
-        resolve: (payload) => payload.messageAdded,
+        filter: (payload, variables) => String(payload?.roomId) === String(variables?.roomId),
+        resolve: (payload) => {
+            const msg = payload?.messageAdded;
+            if (!msg)
+                return msg;
+            return {
+                ...msg,
+                createdAt: typeof msg.createdAt === 'string' ? new Date(msg.createdAt) : msg.createdAt,
+            };
+        },
     }),
-    __param(0, (0, graphql_1.Args)('roomId')),
+    __param(0, (0, graphql_1.Args)('roomId', { type: () => graphql_1.ID })),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)

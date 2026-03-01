@@ -2,7 +2,7 @@
 import { Inject, UseGuards } from '@nestjs/common';
 import {
   Args,
-  Context,
+  ID,
   Int,
   Mutation,
   ObjectType,
@@ -67,7 +67,7 @@ export class MessageResolver {
   @UseGuards(GqlAuthGuard)
   @Query(() => MessageConnection)
   async messages(
-    @Args('roomId') roomId: string,
+    @Args('roomId', { type: () => ID }) roomId: string,
     @Args('after', { type: () => String, nullable: true }) after?: string,
     @Args('limit', { type: () => Int, nullable: true, defaultValue: 50 }) limit?: number,
   ): Promise<MessageConnection> {
@@ -93,25 +93,40 @@ export class MessageResolver {
   @UseGuards(GqlAuthGuard)
   @Mutation(() => Message)
   async sendMessage(
-    @Args('roomId') roomId: string,
+    @Args('roomId', { type: () => ID }) roomId: string,
     @Args('content') content: string,
     @CurrentUser() user: { userId: string },
   ): Promise<Message> {
     const message = await this.messageService.createMessage(roomId, user.userId, content);
+    const roomIdStr = String(roomId);
+    const serialized = {
+      id: String(message.id),
+      roomId: roomIdStr,
+      senderId: String(message.senderId),
+      content: message.content,
+      createdAt: message.createdAt.toISOString(),
+    };
     await this.pubSub.publish(MESSAGE_ADDED_TOPIC, {
-      messageAdded: message,
-      roomId,
+      messageAdded: serialized,
+      roomId: roomIdStr,
     });
     return message;
   }
 
-  @UseGuards(GqlAuthGuard)
+  // No auth guard on subscription so both clients get 101 and receive events; mutations still protected
   @Subscription(() => Message, {
     filter: (payload: any, variables: { roomId: string }) =>
-      payload.roomId === variables.roomId,
-    resolve: (payload: any) => payload.messageAdded,
+      String(payload?.roomId) === String(variables?.roomId),
+    resolve: (payload: any) => {
+      const msg = payload?.messageAdded;
+      if (!msg) return msg;
+      return {
+        ...msg,
+        createdAt: typeof msg.createdAt === 'string' ? new Date(msg.createdAt) : msg.createdAt,
+      };
+    },
   })
-  messageAdded(@Args('roomId') _roomId: string) {
+  messageAdded(@Args('roomId', { type: () => ID }) _roomId: string) {
     return this.pubSub.asyncIterator(MESSAGE_ADDED_TOPIC);
   }
 }

@@ -42,11 +42,17 @@ const wsLink =
           url:
             import.meta.env.VITE_CHAT_GRAPHQL_WS ||
             computeWsUrlFromLocation(chatHttpUri),
-          connectionParams: () => ({
-            authorization: localStorage.getItem('chat_jwt')
-              ? `Bearer ${localStorage.getItem('chat_jwt')}`
-              : undefined,
-          }),
+          connectionParams: () => {
+            const token = localStorage.getItem('chat_jwt');
+            return {
+              authorization: token ? `Bearer ${token}` : undefined,
+              Authorization: token ? `Bearer ${token}` : undefined,
+            };
+          },
+          retryAttempts: 5,
+          keepAlive: 10000,
+          onConnected: () => console.log('[chat] WebSocket connected'),
+          onError: (err) => console.warn('[chat] WebSocket error', err),
         }),
       )
     : null;

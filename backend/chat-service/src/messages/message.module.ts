@@ -1,4 +1,4 @@
-// AI-generated NestJS module for Message domain
+// NestJS module for Message domain
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Message } from './message.entity';

@@ -1,6 +1,6 @@
-// AI-generated GraphQL resolver for chat rooms and membership
+// GraphQL resolver for chat rooms and membership
 import { UseGuards } from '@nestjs/common';
-import { Args, Context, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { Args, ID, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { Room } from './room.entity';
 import { RoomService } from './room.service';
 import { GqlAuthGuard } from '../security/gql-auth.guard';
@@ -12,7 +12,7 @@ export class RoomResolver {
 
   @UseGuards(GqlAuthGuard)
   @Query(() => Room, { nullable: true })
-  async chatRoom(@Args('id') id: string): Promise<Room | null> {
+  async chatRoom(@Args('id', { type: () => ID }) id: string): Promise<Room | null> {
     return this.roomService.findRoomById(id);
   }
 
@@ -37,7 +37,7 @@ export class RoomResolver {
   @UseGuards(GqlAuthGuard)
   @Mutation(() => Room)
   async joinRoom(
-    @Args('roomId') roomId: string,
+    @Args('roomId', { type: () => ID }) roomId: string,
     @CurrentUser() user: { userId: string },
   ): Promise<Room> {
     return this.roomService.joinRoom(roomId, user.userId);

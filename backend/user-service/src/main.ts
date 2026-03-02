@@ -1,4 +1,4 @@
-// AI-generated NestJS bootstrap file for user-service
+// NestJS bootstrap file for user-service
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 
@@ -9,7 +9,7 @@ async function bootstrap() {
 
 bootstrap().catch((err) => {
   // In production you might want better structured logging here
-  // AI-generated error log
+  // error log
   // eslint-disable-next-line no-console
   console.error('Error starting user-service', err);
 });

@@ -1,4 +1,4 @@
-// AI-generated GraphQL operations for chat-service
+// GraphQL operations for chat-service
 import { gql } from '@apollo/client';
 
 export const CREATE_ROOM = gql`

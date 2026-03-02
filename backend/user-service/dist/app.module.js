@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppModule = void 0;
-// AI-generated root module for user-service
+// root module for user-service
 const common_1 = require("@nestjs/common");
 const config_1 = require("@nestjs/config");
 const graphql_1 = require("@nestjs/graphql");
@@ -22,18 +22,18 @@ exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
         imports: [
-            // AI-generated configuration module setup
+            // configuration module setup
             config_1.ConfigModule.forRoot({
                 isGlobal: true,
             }),
-            // AI-generated GraphQL configuration for user-service
+            // GraphQL configuration for user-service
             graphql_1.GraphQLModule.forRoot({
                 driver: apollo_1.ApolloDriver,
                 autoSchemaFile: true,
                 path: '/graphql',
                 context: ({ req }) => ({ req }),
             }),
-            // AI-generated TypeORM configuration for Postgres
+            // TypeORM configuration for Postgres
             typeorm_1.TypeOrmModule.forRootAsync({
                 useFactory: () => ({
                     type: 'postgres',

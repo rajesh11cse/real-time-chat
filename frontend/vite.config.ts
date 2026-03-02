@@ -1,4 +1,4 @@
-// AI-generated Vite config for React frontend
+// Vite config for React frontend
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 

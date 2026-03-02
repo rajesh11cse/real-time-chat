@@ -1,4 +1,4 @@
-// AI-generated service for message creation and querying with ordering guarantees
+// service for message creation and querying with ordering guarantees
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';

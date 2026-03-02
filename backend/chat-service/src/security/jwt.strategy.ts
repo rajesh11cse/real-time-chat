@@ -1,4 +1,4 @@
-// AI-generated JWT strategy for chat-service to validate tokens issued by user-service
+// JWT strategy for chat-service to validate tokens issued by user-service
 import { Injectable } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
@@ -14,7 +14,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   }
 
   async validate(payload: { sub: string; username: string }) {
-    // AI-generated validation payload mapping
+    // validation payload mapping
     return { userId: payload.sub, username: payload.username };
   }
 }

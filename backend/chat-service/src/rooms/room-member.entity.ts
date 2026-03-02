@@ -1,4 +1,4 @@
-// AI-generated TypeORM entity and GraphQL type for Room Member
+// TypeORM entity and GraphQL type for Room Member
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import {
   Column,

@@ -1,4 +1,4 @@
-// AI-generated authentication form component (register/login) using user-service
+// authentication form component (register/login) using user-service
 import React, { useState } from 'react';
 import { userClient } from '../apollo/userClient';
 import { LOGIN, REGISTER } from '../graphql/user';
@@ -58,60 +58,67 @@ export const AuthForm: React.FC<AuthFormProps> = ({ onAuthenticated }) => {
   };
 
   return (
-    <div style={{ maxWidth: 400, margin: '2rem auto' }}>
-      <h2>{mode === 'login' ? 'Login' : 'Register'}</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>
-            Username
+    <div className="page-center">
+      <div className="card">
+        <h2 className="card-title">{mode === 'login' ? 'Sign in' : 'Create account'}</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label htmlFor="auth-username">Username</label>
             <input
+              id="auth-username"
               type="text"
+              className="input"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
+              placeholder="Enter username"
               required
             />
-          </label>
-        </div>
-        {mode === 'register' && (
-          <div>
-            <label>
-              Display name
+          </div>
+          {mode === 'register' && (
+            <div className="form-group">
+              <label htmlFor="auth-displayName">Display name</label>
               <input
+                id="auth-displayName"
                 type="text"
+                className="input"
                 value={displayName}
                 onChange={(e) => setDisplayName(e.target.value)}
+                placeholder="How others see you"
                 required
               />
-            </label>
-          </div>
-        )}
-        <div>
-          <label>
-            Password
+            </div>
+          )}
+          <div className="form-group">
+            <label htmlFor="auth-password">Password</label>
             <input
+              id="auth-password"
               type="password"
+              className="input"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              placeholder="Enter password"
               required
             />
-          </label>
+          </div>
+          {error && <p className="form-error">{error}</p>}
+          <button type="submit" className="btn btn-primary" disabled={loading} style={{ width: '100%' }}>
+            {loading ? 'Please wait…' : mode === 'login' ? 'Sign in' : 'Register'}
+          </button>
+        </form>
+        <div className="auth-toggle">
+          <button
+            type="button"
+            className="btn"
+            onClick={() =>
+              setMode((prev) => (prev === 'login' ? 'register' : 'login'))
+            }
+          >
+            {mode === 'login'
+              ? 'Need an account? Register'
+              : 'Already have an account? Sign in'}
+          </button>
         </div>
-        {error && <p style={{ color: 'red' }}>{error}</p>}
-        <button type="submit" disabled={loading}>
-          {loading ? 'Please wait…' : mode === 'login' ? 'Login' : 'Register'}
-        </button>
-      </form>
-      <button
-        type="button"
-        onClick={() =>
-          setMode((prev) => (prev === 'login' ? 'register' : 'login'))
-        }
-        style={{ marginTop: '1rem' }}
-      >
-        {mode === 'login'
-          ? 'Need an account? Register'
-          : 'Already have an account? Login'}
-      </button>
+      </div>
     </div>
   );
 };

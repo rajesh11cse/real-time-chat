@@ -1,4 +1,4 @@
-// AI-generated chat room component with history and live updates
+// chat room component with history and live updates
 import React, { useEffect, useMemo, useState } from 'react';
 import { useMutation, useQuery, useSubscription } from '@apollo/client';
 import { MESSAGE_ADDED, MESSAGES, SEND_MESSAGE } from '../graphql/chat';
@@ -37,14 +37,12 @@ export const ChatRoom: React.FC<ChatRoomProps> = ({
       const msg = data.data?.messageAdded as MessageNode | undefined;
       if (!msg) return;
       setMessages((prev) => {
+        if (prev.some((m) => String(m.id) === String(msg.id))) return prev;
         const next = [...prev, msg];
-        // Ensure stable ordering by createdAt then id
         return next.sort((a, b) => {
           const tA = new Date(a.createdAt).getTime();
           const tB = new Date(b.createdAt).getTime();
-          if (tA === tB) {
-            return Number(a.id) - Number(b.id);
-          }
+          if (tA === tB) return Number(a.id) - Number(b.id);
           return tA - tB;
         });
       });
@@ -65,6 +63,7 @@ export const ChatRoom: React.FC<ChatRoomProps> = ({
     if (!text.trim()) return;
     await sendMessage({ variables: { roomId, content: text } });
     setText('');
+    // Sender sees their message via subscription (same as other users), so no duplicate
   };
 
   const sortedMessages = useMemo(
@@ -81,55 +80,46 @@ export const ChatRoom: React.FC<ChatRoomProps> = ({
   );
 
   return (
-    <div style={{ maxWidth: 600, margin: '2rem auto' }}>
-      <h2>Room: {roomName}</h2>
-      {loading && <p>Loading history…</p>}
-      <div
-        style={{
-          border: '1px solid #ccc',
-          padding: '1rem',
-          minHeight: '200px',
-          maxHeight: '400px',
-          overflowY: 'auto',
-        }}
-      >
-        {sortedMessages.map((m) => (
-          <div
-            key={m.id}
-            style={{
-              marginBottom: '0.5rem',
-              textAlign: m.senderId === currentUserId ? 'right' : 'left',
-            }}
-          >
-            <div
-              style={{
-                display: 'inline-block',
-                background:
-                  m.senderId === currentUserId ? '#DCF8C6' : '#f1f0f0',
-                padding: '0.5rem 0.75rem',
-                borderRadius: 8,
-              }}
-            >
-              <div style={{ fontSize: '0.8rem', opacity: 0.7 }}>
-                {m.senderId === currentUserId ? 'You' : `User ${m.senderId}`}
-              </div>
-              <div>{m.content}</div>
-            </div>
-          </div>
-        ))}
-        {sortedMessages.length === 0 && !loading && <p>No messages yet.</p>}
+    <div className="chat-layout">
+      <div className="chat-header">
+        <h1>{roomName}</h1>
       </div>
-      <form onSubmit={handleSend} style={{ marginTop: '1rem' }}>
-        <input
-          type="text"
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-          placeholder="Type a message…"
-          style={{ width: '80%' }}
-        />
-        <button type="submit" style={{ width: '18%', marginLeft: '2%' }}>
-          Send
-        </button>
+      <div className="chat-messages">
+        {loading && (
+          <div className="chat-messages-loading">Loading history…</div>
+        )}
+        {!loading && sortedMessages.length === 0 && (
+          <div className="chat-messages-empty">No messages yet. Say hello!</div>
+        )}
+        {!loading &&
+          sortedMessages.map((m) => (
+            <div
+              key={m.id}
+              className={`msg ${m.senderId === currentUserId ? 'msg-sent' : 'msg-received'}`}
+            >
+              <div className="msg-bubble">
+                <div className="msg-sender">
+                  {m.senderId === currentUserId ? 'You' : `User ${m.senderId}`}
+                </div>
+                <div className="msg-content">{m.content}</div>
+              </div>
+            </div>
+          ))}
+      </div>
+      <form onSubmit={handleSend} className="chat-form">
+        <div className="chat-form-inner">
+          <input
+            type="text"
+            className="input"
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+            placeholder="Type a message…"
+            aria-label="Message"
+          />
+          <button type="submit" className="btn btn-primary">
+            Send
+          </button>
+        </div>
       </form>
     </div>
   );

@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-// AI-generated NestJS bootstrap file for chat-service
+// NestJS bootstrap file for chat-service
 const core_1 = require("@nestjs/core");
 const app_module_1 = require("./app.module");
 async function bootstrap() {
@@ -8,7 +8,7 @@ async function bootstrap() {
     await app.listen(process.env.PORT || 4002);
 }
 bootstrap().catch((err) => {
-    // AI-generated error log
+    // error log
     // eslint-disable-next-line no-console
     console.error('Error starting chat-service', err);
 });

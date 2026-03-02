@@ -1,4 +1,4 @@
-// AI-generated Apollo Client setup for user-service (HTTP only, used imperatively)
+// Apollo Client setup for user-service (HTTP only, used imperatively)
 import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client';
 
 const userHttpUri =

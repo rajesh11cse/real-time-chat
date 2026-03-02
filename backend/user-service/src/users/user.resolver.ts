@@ -1,4 +1,4 @@
-// AI-generated GraphQL resolver for User queries
+// GraphQL resolver for User queries
 import { UseGuards } from '@nestjs/common';
 import { Args, Int, Query, Resolver } from '@nestjs/graphql';
 import { User } from './user.entity';

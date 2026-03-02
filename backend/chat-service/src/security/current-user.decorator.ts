@@ -1,4 +1,4 @@
-// AI-generated decorator to get the current user from GraphQL context in chat-service
+// decorator to get the current user from GraphQL context in chat-service
 import { createParamDecorator, ExecutionContext } from '@nestjs/common';
 import { GqlExecutionContext } from '@nestjs/graphql';
 

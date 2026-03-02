@@ -1,4 +1,4 @@
-// AI-generated NestJS module for User domain
+// NestJS module for User domain
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './user.entity';

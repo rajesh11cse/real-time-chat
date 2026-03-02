@@ -1,4 +1,4 @@
-// AI-generated auth service for issuing JWT tokens
+// auth service for issuing JWT tokens
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { UserService } from '../users/user.service';

@@ -1,4 +1,4 @@
-// AI-generated TypeORM entity and GraphQL type for Message
+// TypeORM entity and GraphQL type for Message
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import {
   Column,

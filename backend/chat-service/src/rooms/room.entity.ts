@@ -1,4 +1,4 @@
-// AI-generated TypeORM entity and GraphQL type for Chat Room
+// TypeORM entity and GraphQL type for Chat Room
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import {
   Column,

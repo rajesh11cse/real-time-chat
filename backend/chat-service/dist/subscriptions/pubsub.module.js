@@ -10,10 +10,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PubSubModule = exports.PUB_SUB = void 0;
-// AI-generated Redis PubSub module for GraphQL subscriptions
+// Redis PubSub module for GraphQL subscriptions
 const common_1 = require("@nestjs/common");
 const graphql_redis_subscriptions_1 = require("graphql-redis-subscriptions");
-// AI-generated: ioredis default export is the Redis client constructor
+//  ioredis default export is the Redis client constructor
 const ioredis_1 = __importDefault(require("ioredis"));
 exports.PUB_SUB = 'PUB_SUB';
 let PubSubModule = class PubSubModule {

@@ -1,12 +1,19 @@
 {
-  "//_comment": "AI-generated TypeScript config for chat-service",
+  "//_comment": "TypeScript config for chat-service",
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
+    "target": "ES2020",
+    "module": "commonjs",
+    "moduleResolution": "node",
     "outDir": "./dist",
-    // AI-generated: required for NestJS / TypeORM decorators
+    "strict": true,
+    "resolveJsonModule": true,
+    "forceConsistentCasingInFileNames": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "useDefineForClassFields": false
+    "useDefineForClassFields": false,
+    "esModuleInterop": true,
+    "skipLibCheck": true
   },
   "include": ["src/**/*"]
 }

@@ -1,4 +1,4 @@
--- AI-generated SQL schema for user-service database
+-- SQL schema for user-service database
 
 CREATE TABLE IF NOT EXISTS users (
   id BIGSERIAL PRIMARY KEY,

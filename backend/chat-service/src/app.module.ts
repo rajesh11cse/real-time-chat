@@ -1,4 +1,4 @@
-// AI-generated root module for chat-service
+// root module for chat-service
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
@@ -13,11 +13,11 @@ import { PubSubModule } from './subscriptions/pubsub.module';
 
 @Module({
   imports: [
-    // AI-generated configuration module setup
+    // configuration module setup
     ConfigModule.forRoot({
       isGlobal: true,
     }),
-    // AI-generated GraphQL configuration with subscriptions for chat-service
+    // GraphQL configuration with subscriptions for chat-service
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: true,
@@ -25,6 +25,7 @@ import { PubSubModule } from './subscriptions/pubsub.module';
       installSubscriptionHandlers: true,
       subscriptions: {
         'graphql-ws': true,
+        'subscriptions-transport-ws': true,
       },
       context: ({ req, extra }: { req?: any; extra?: any }) => {
         // For WebSocket connections, build a fake request object
@@ -43,7 +44,7 @@ import { PubSubModule } from './subscriptions/pubsub.module';
         };
       },
     }),
-    // AI-generated TypeORM configuration for Postgres
+    // TypeORM configuration for Postgres
     TypeOrmModule.forRootAsync({
       useFactory: () => ({
         type: 'postgres',

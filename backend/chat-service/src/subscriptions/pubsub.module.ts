@@ -1,7 +1,7 @@
-// AI-generated Redis PubSub module for GraphQL subscriptions
+// Redis PubSub module for GraphQL subscriptions
 import { Global, Module } from '@nestjs/common';
 import { RedisPubSub } from 'graphql-redis-subscriptions';
-// AI-generated: ioredis default export is the Redis client constructor
+//  ioredis default export is the Redis client constructor
 import Redis, { RedisOptions } from 'ioredis';
 
 export const PUB_SUB = 'PUB_SUB';

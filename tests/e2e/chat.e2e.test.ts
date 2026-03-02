@@ -1,4 +1,4 @@
-// AI-generated end-to-end test:
+// end-to-end test:
 // user A sends a message, user B receives it via subscription.
 import { createClient, Client } from 'graphql-ws';
 import WebSocket from 'ws';
